@@ -2,9 +2,11 @@
 
 {% block title %}
     My Blog
+
 {% endblock %}
 
 {% block content %}
+    <a href="{% url 'blog:post_list_url' %}">back</a>
     <h1>My Blog</h1>
     {% if tag %}
         <h2>Posts tagged with "{{ tag.name }}"</h2>
