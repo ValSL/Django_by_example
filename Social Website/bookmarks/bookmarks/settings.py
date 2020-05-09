@@ -120,5 +120,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'dashboard_url'
-LOGIN_URL = 'login_url'
-LOGOUT_URL = 'logout_url'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'ValSLTest@yandex.by'
+EMAIL_HOST_PASSWORD = 'etereg14'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Это скорее всего из-за бд
