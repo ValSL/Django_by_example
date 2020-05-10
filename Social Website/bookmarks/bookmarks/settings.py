@@ -130,3 +130,6 @@ EMAIL_HOST_PASSWORD = 'etereg14'
 EMAIL_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Это скорее всего из-за бд
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
