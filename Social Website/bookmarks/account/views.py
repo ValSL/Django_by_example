@@ -42,7 +42,9 @@ def dashboard(request):
     following_ids = request.user.following.values_list('id', flat=True)
     if following_ids:
         actions = Action.objects.filter(user_id__in=following_ids)
-    actions = actions[:10]
+    # select_related нужен для уменьшения кол-ва запросов к БД, под капотом там JOIN
+    # в одном запросе обращаемся и к user и к profile
+    actions = actions.select_related('user', 'user__profile')[:10]
 
     return render(request, 'account/dashboard.html', {'section': 'dashboard', 'actions': actions})
 
