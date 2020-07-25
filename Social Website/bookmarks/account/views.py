@@ -44,7 +44,9 @@ def dashboard(request):
         actions = Action.objects.filter(user_id__in=following_ids)
     # select_related нужен для уменьшения кол-ва запросов к БД, под капотом там JOIN
     # в одном запросе обращаемся и к user и к profile
-    actions = actions.select_related('user', 'user__profile')[:10]
+    # только для one-to-many
+    # prefetch_related для many-to-many
+    actions = actions.select_related('user', 'user__profile').prefetch_related('target')[:10]
 
     return render(request, 'account/dashboard.html', {'section': 'dashboard', 'actions': actions})
 
